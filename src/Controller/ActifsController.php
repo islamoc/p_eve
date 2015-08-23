@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Controller\ClasseController;
 
 /**
  * Actifs Controller
@@ -69,6 +70,12 @@ class ActifsController extends AppController
      */
     public function add()
     {
+        $o = new ClasseController();
+        $this->set("options",$o->getClasse());
+        if ($this->Auth->user('TYPEUSER') == 1){
+            $this->set("valide",true);
+        }
+        else $this->set("valide",false);
         $actif = $this->Actifs->newEntity();
         if ($this->request->is('post')) {
             $actif = $this->Actifs->patchEntity($actif, $this->request->data);
@@ -94,6 +101,7 @@ class ActifsController extends AppController
     public function edit($id = null)
     {
       if ($this->Auth->user('TYPEUSER') == 1){
+        $this->set("valide",true);
         $actif = $this->Actifs->get($id, [
             'contain' => []
         ]);
@@ -111,6 +119,7 @@ class ActifsController extends AppController
         $this->set('_serialize', ['actif']);
       }
       else{
+        $this->set("valide",false);
         $actif = $this->Actifs->get($id, [
             'conditions' => ['actifs.VALIDE' => 1,'actifs.ID_USER' => $this->Auth->user('ID_USER')],
             'contain' => []

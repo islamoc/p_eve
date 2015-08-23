@@ -82,6 +82,10 @@ class ClasseController extends AppController
      */
     public function add()
     {
+        if ($this->Auth->user('TYPEUSER') == 1){
+            $this->set("valide",true);
+        }
+        else $this->set("valide",false);
         $classe = $this->Classe->newEntity();
         if ($this->request->is('post')) {
             $classe = $this->Classe->patchEntity($classe, $this->request->data);
@@ -108,6 +112,7 @@ class ClasseController extends AppController
     {
       if ($this->Auth->user('TYPEUSER') == 1)
       {
+        $this->set("valide",true);
         $classe = $this->Classe->get($id, [
             'contain' => []
         ]);
@@ -126,6 +131,7 @@ class ClasseController extends AppController
       }
       else
       {
+        $this->set("valide",true);
         $classe = $this->Classe->get($id, [
             'conditions' => ['classe.VALIDE' => 1,'classe.ID_USER' => $this->Auth->user('ID_USER')],
             'contain' => []

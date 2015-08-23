@@ -21,7 +21,9 @@
             $options = $this->Actif->getClasseHelper();
             echo $this->Form->select('ID_CLASSE', $options,['empty' => "Classe"]);
             //echo $this->Form->input('ID_CLASSE');
+            if ($valide){
             echo $this->Form->input('VALIDE');
+            }
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

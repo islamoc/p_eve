@@ -13,7 +13,7 @@
             echo $this->Form->input('THEMATIQUE');
             echo $this->Form->input('CATEGORIE');
             echo $this->Form->input('RUBRIQUE');
-            echo $this->Form->input('VALIDE');
+            if ($valide) echo $this->Form->input('VALIDE');
             //echo $this->Form->input('ID_USER');
         ?>
     </fieldset>

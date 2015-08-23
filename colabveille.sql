@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2015 at 11:03 PM
+-- Generation Time: Aug 23, 2015 at 09:12 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -290,12 +290,6 @@ ADD CONSTRAINT `archivebul_ibfk_1` FOREIGN KEY (`ID_BUL`) REFERENCES `bulettinvu
 --
 ALTER TABLE `article`
 ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`ID_SITE`) REFERENCES `siteweb` (`ID_SITE`);
-
---
--- Constraints for table `bulettinvul`
---
-ALTER TABLE `bulettinvul`
-ADD CONSTRAINT `article_id_fk` FOREIGN KEY (`ID_ARTICLE`) REFERENCES `article` (`ID_ARTICLE`);
 
 --
 -- Constraints for table `classe`
