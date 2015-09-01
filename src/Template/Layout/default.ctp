@@ -27,6 +27,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->meta('icon') ?>
 
     <?= $this->Html->css('base.css') ?>
+    <?= $this->Html->css('multi-select.css') ?>
     <?= $this->Html->css('cake.css') ?>
 
     <?= $this->fetch('meta') ?>
@@ -39,8 +40,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <span><?= $this->fetch('title') ?></span>
         </div>
         <div class="header-help">
-            <span><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></span>
-            <span><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></span>
+            <span><a  href="users">Users</a></span>
+            <span><a  href="actifs">Actifs</a></span>
+            <span><a  href="classe">Classe</a></span>
+            <span><a  href="bulettinvul">Bulettin</a></span>
+            <span><a  href="siteweb">Site</a></span>
+            <span><a  href="spider">Spider</a></span>
+            <span><a  href="users/logout">Logout</a></span>
         </div>
     </header>
     <div id="container">
@@ -56,4 +62,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </footer>
     </div>
 </body>
+<?php echo $this->Html->script('jquery'); ?>
+<?php echo $this->Html->script('jquery.multi-select'); ?>
 </html>

@@ -27,10 +27,21 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
+    public function isAuthorized($user = null)
+    {
+    // Admin can access every action
+    if ($this->Auth->user("TYPEUSER") == 1) {
+        return true;
+    }
+
+    // Default deny
+    $this->redirect(['controller' => '', 'action' => '']);
+    return false;
+  }
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow('blbl');
+        $this->Auth->allow('ksas');
     }
     /**
      * Initialization hook method.
@@ -44,10 +55,12 @@ class AppController extends Controller
         parent::initialize();
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
+            'authorize' => ['Controller'],
             'loginRedirect' => [
-                'controller' => 'users',
-                'action' => 'index'
-            ],'authenticate' => [
+                'controller' => 'pages',
+                'action' => 'home'
+            ],
+            'authenticate' => [
                  'Form' => [
                    'userModel' => 'users', // Added This
                    'fields' => [
@@ -60,6 +73,16 @@ class AppController extends Controller
                 'controller' => 'users',
                 'action' => 'login'
             ]
+
         ]);
+        if ($this->Auth->user("TYPEUSER") == 1) $this->set("admin",true);
+        else $this->set("admin",false);
+        if ($this->Auth->user("TYPEUSER") == 2) $this->set("commite",true);
+        else $this->set("commite",false);
+        if ($this->Auth->user("TYPEUSER") == 3) $this->set("analyst",true);
+        else $this->set("analyst",false);
+        if ($this->Auth->user("TYPEUSER") == 4) $this->set("inter",true);
+        else $this->set("inter",false);
+
     }
 }

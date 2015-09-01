@@ -1,17 +1,17 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Spider;
+use App\Model\Entity\Article;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Spider Model
+ * Article Model
  *
  */
-class SpiderTable extends Table
+class ArticleTable extends Table
 {
 
     /**
@@ -24,13 +24,9 @@ class SpiderTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('spider');
-        $this->belongsTo('siteweb', [
-            'foreignKey' => 'ID_SITE',
-            'className' => 'siteweb'
-        ]);
-        $this->displayField('ID');
-        $this->primaryKey('ID');
+        $this->table('article');
+        $this->displayField('ID_ARTICLE');
+        $this->primaryKey('ID_ARTICLE');
     }
 
     /**
@@ -42,20 +38,22 @@ class SpiderTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('ID', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('ID', 'create');
-
-        $validator
-            ->allowEmpty('NOMSPIDER');
-
-        $validator
-            ->add('ETAT', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('ETAT');
+            ->add('ID_ARTICLE', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('ID_ARTICLE', 'create');
 
         $validator
             ->add('ID_SITE', 'valid', ['rule' => 'numeric'])
             ->requirePresence('ID_SITE', 'create')
             ->notEmpty('ID_SITE');
+
+        $validator
+            ->allowEmpty('URLARTICLE');
+
+        $validator
+            ->allowEmpty('DESCRI');
+
+        $validator
+            ->allowEmpty('DATECAP');
 
         return $validator;
     }

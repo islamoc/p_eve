@@ -11,6 +11,12 @@ use App\Controller\AppController;
 class SitewebController extends AppController
 {
 
+    public function isAuthorized($user = null)
+    {
+    return parent::isAuthorized();
+    //return true;
+    }
+
     /**
      * Index method
      *

@@ -1,17 +1,17 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Spider;
+use App\Model\Entity\Concerne;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Spider Model
+ * Concerne Model
  *
  */
-class SpiderTable extends Table
+class ConcerneTable extends Table
 {
 
     /**
@@ -24,11 +24,7 @@ class SpiderTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('spider');
-        $this->belongsTo('siteweb', [
-            'foreignKey' => 'ID_SITE',
-            'className' => 'siteweb'
-        ]);
+        $this->table('concerne');
         $this->displayField('ID');
         $this->primaryKey('ID');
     }
@@ -46,16 +42,14 @@ class SpiderTable extends Table
             ->allowEmpty('ID', 'create');
 
         $validator
-            ->allowEmpty('NOMSPIDER');
+            ->add('ID_USER', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('ID_USER', 'create')
+            ->notEmpty('ID_USER');
 
         $validator
-            ->add('ETAT', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('ETAT');
-
-        $validator
-            ->add('ID_SITE', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('ID_SITE', 'create')
-            ->notEmpty('ID_SITE');
+            ->add('ID_BUL', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('ID_BUL', 'create')
+            ->notEmpty('ID_BUL');
 
         return $validator;
     }

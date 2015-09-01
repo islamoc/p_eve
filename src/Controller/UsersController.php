@@ -11,11 +11,34 @@ use Cake\Event\Event;
  */
 class UsersController extends AppController
 {
+    public function isAuthorized($user = null)
+    {
+    // All registered users can add articles
+    if ($this->Auth->user("TYPEUSER") == 1) {
+        return true;
+    }
+
+    return parent::isAuthorized();
+  }
 
 
     /*public $paginate = [
         'fields' => ['ID_USER', 'USER','NOM','PRENOM','EMAIL','POSTE']
     ];*/
+    public function getAnalysts()
+    {
+      $query = $this->Users->find('all', [
+                                      'conditions' => ['users.TYPEUSER' => 3],
+                                      ]);
+      $query->hydrate(false);
+      $results = $query->all();
+      $results = $results->toArray();
+      $o = array();
+      for ($i = 0;$i<count($results);$i++){
+        $o[$results[$i]["ID_USER"]] = $results[$i]["USER"];
+      }
+      return $o;
+    }
 
     public function beforeFilter(Event $event)
     {
@@ -23,7 +46,7 @@ class UsersController extends AppController
       // Allow users to register and logout.
       // You should not add the "login" action to allow list. Doing so would
       // cause problems with normal functioning of AuthComponent.
-      $this->Auth->allow('add');
+      $this->Auth->allow('logout');
     }
     /*public function beforeFilter(Event $event)
     {

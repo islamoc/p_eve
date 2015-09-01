@@ -21,7 +21,8 @@
             <td><?= $this->Number->format($spider->ID) ?></td>
             <td><?= h($spider->NOMSPIDER) ?></td>
             <td><?= $this->Number->format($spider->ETAT) ?></td>
-            <td><?= $this->Number->format($spider->ID_SITE) ?></td>
+            <td><?= //$this->Number->format($spider->URLSITE)
+            h($spider->siteweb->URLSITE) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $spider->ID]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $spider->ID]) ?>

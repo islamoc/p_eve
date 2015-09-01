@@ -12,6 +12,12 @@ use App\Controller\SitewebController;
 class SpiderController extends AppController
 {
 
+    public function isAuthorized($user = null)
+    {
+    return parent::isAuthorized();
+    //return true;
+    }
+
     /**
      * Index method
      *
@@ -19,7 +25,7 @@ class SpiderController extends AppController
      */
     public function index()
     {
-        $this->set('spider', $this->paginate($this->Spider));
+        $this->set('spider', $this->paginate($this->Spider->find("all",["contain"=>["siteweb"]])));
         $this->set('_serialize', ['spider']);
     }
 

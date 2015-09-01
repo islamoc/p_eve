@@ -11,6 +11,14 @@ use App\Controller\AppController;
 class ClasseController extends AppController
 {
 
+    public function isAuthorized($user = null)
+    {
+    if ($this->Auth->user("TYPEUSER") == 4) {
+        return true;
+    }
+    return parent::isAuthorized();
+    //return true;
+    }
     /**
      * Index method
      *
