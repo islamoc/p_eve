@@ -98,6 +98,7 @@ class ClasseController extends AppController
         if ($this->request->is('post')) {
             $classe = $this->Classe->patchEntity($classe, $this->request->data);
             $classe->ID_USER = $this->Auth->user('ID_USER');
+            $classe->VALIDE = 0;
             if ($this->Classe->save($classe)) {
                 $this->Flash->success(__('The classe has been saved.'));
                 return $this->redirect(['action' => 'index']);

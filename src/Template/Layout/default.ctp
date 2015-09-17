@@ -39,15 +39,17 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="header-title">
             <span><?= $this->fetch('title') ?></span>
         </div>
+        <?php if ($loggedIn){ ?>
         <div class="header-help">
-            <span><a  href="users">Users</a></span>
-            <span><a  href="actifs">Actifs</a></span>
-            <span><a  href="classe">Classe</a></span>
-            <span><a  href="bulettinvul">Bulettin</a></span>
-            <span><a  href="siteweb">Site</a></span>
-            <span><a  href="spider">Spider</a></span>
-            <span><a  href="users/logout">Logout</a></span>
+            <span><a  href="<?php echo $link?>users">Users</a></span>
+            <span><a  href="<?php echo $link?>actifs">Actifs</a></span>
+            <span><a  href="<?php echo $link?>classe">Classe</a></span>
+            <span><a  href="<?php echo $link?>bulettinvul">Bulettin</a></span>
+            <span><a  href="<?php echo $link?>siteweb">Site</a></span>
+            <span><a  href="<?php echo $link?>spider">Spider</a></span>
+            <span><a  href="<?php echo $link?>users/logout">Logout</a></span>
         </div>
+      <?php } ?>
     </header>
     <div id="container">
 

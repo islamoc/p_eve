@@ -89,6 +89,7 @@ class ActifsController extends AppController
         if ($this->request->is('post')) {
             $actif = $this->Actifs->patchEntity($actif, $this->request->data);
             $actif->ID_USER = $this->Auth->user('ID_USER');
+            $actif->VALIDE = 0;
             if ($this->Actifs->save($actif)) {
                 $this->Flash->success(__('The actif has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -109,6 +110,8 @@ class ActifsController extends AppController
      */
     public function edit($id = null)
     {
+      $o = new ClasseController();
+      $this->set("options",$o->getClasse());
       if ($this->Auth->user('TYPEUSER') == 1){
         $this->set("valide",true);
         $actif = $this->Actifs->get($id, [

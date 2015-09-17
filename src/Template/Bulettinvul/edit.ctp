@@ -36,7 +36,7 @@
             if ($admin) echo $this->Form->input('ID_ARTICLE',["type"=>"select","label"=>"Article","options"=>[$aoptions,0=>"Autre"]]);
             //echo $this->Form->input('State');
             //$options = [1 =>"test" , 2 => "test2"];
-            echo $this->Form->select('USERS', $options,["multiple"=>true]);
+            //echo $this->Form->select('USERS', $options,["multiple"=>true]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

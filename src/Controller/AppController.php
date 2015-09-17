@@ -53,6 +53,7 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
+        $this->set("link","http://localhost/pfe/");
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
             'authorize' => ['Controller'],
@@ -83,6 +84,9 @@ class AppController extends Controller
         else $this->set("analyst",false);
         if ($this->Auth->user("TYPEUSER") == 4) $this->set("inter",true);
         else $this->set("inter",false);
+        if ($this->Auth->user("TYPEUSER") == 4) $this->set("inter",true);
+        else $this->set("inter",false);
+        $this->set('loggedIn', $this->Auth->user());
 
     }
 }

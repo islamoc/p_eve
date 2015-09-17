@@ -23,7 +23,7 @@
             <td><?= h($actif->MOTCLE) ?></td>
             <td><?= $this->Number->format($actif->ID_USER) ?></td>
             <td><?= $this->Number->format($actif->ID_CLASSE) ?></td>
-            <td><?= $this->Number->format($actif->VALIDE) ?></td>
+            <td class="<?php if ($this->Number->format($actif->VALIDE)== 1) echo 'cake-success';else echo 'cake-error'?>"><?= $this->Number->format($actif->VALIDE) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $actif->ID_ACTIF]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $actif->ID_ACTIF]) ?>

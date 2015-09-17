@@ -27,6 +27,10 @@ class BulettinvulTable extends Table
         $this->table('bulettinvul');
         $this->displayField('ID_BUL');
         $this->primaryKey('ID_BUL');
+        $this->hasMany('Concerne', [
+            'foreignKey' => 'ID_BUL',
+            'dependent' => true,
+        ]);
     }
 
     /**
@@ -76,7 +80,7 @@ class BulettinvulTable extends Table
 
         $validator
             ->allowEmpty('SOURCEFIABLE')
-            ->requirePresence('SOURCEFIABlE', 'update');
+            ->requirePresence('SOURCEFIABLE', 'update');
 
         $validator
             ->allowEmpty('NIVEAUCRITICITE')
@@ -112,7 +116,7 @@ class BulettinvulTable extends Table
 
         $validator
             ->allowEmpty('APPLICHARGE')
-            ->requirePresence('APPLICHARG', 'update');
+            ->requirePresence('APPLICHARGE', 'update');
 
         $validator
             ->allowEmpty('OBSERVATION')

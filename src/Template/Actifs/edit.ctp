@@ -1,5 +1,5 @@
 <div class="actions columns large-2 medium-3">
-    <?php $this->loadHelper('Actif'); ?>
+    <?php //$this->loadHelper('Actif'); ?>
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
         <li><?= $this->Form->postLink(
@@ -18,11 +18,11 @@
         <?php
             echo $this->Form->input('MOTCLE');
             //echo $this->Form->input('ID_USER');
-            $options = $this->Actif->getClasseHelper();
+            //$options = $this->Actif->getClasseHelper();
             echo $this->Form->select('ID_CLASSE', $options,['empty' => "Classe"]);
             //echo $this->Form->input('ID_CLASSE');
             if ($valide){
-            echo $this->Form->input('VALIDE');
+              echo $this->Form->input('VALIDE',["type"=>"select","label"=>"Valide","options"=>[1=>"Oui",0=>"Non"]]);
             }
         ?>
     </fieldset>

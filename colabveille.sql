@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2015 at 06:15 AM
+-- Generation Time: Sep 17, 2015 at 04:30 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -32,14 +32,15 @@ CREATE TABLE IF NOT EXISTS `actifs` (
   `ID_USER` int(11) NOT NULL,
   `ID_CLASSE` int(11) NOT NULL,
   `VALIDE` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COMMENT='La table des mots cl';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='La table des mots cl';
 
 --
 -- Dumping data for table `actifs`
 --
 
 INSERT INTO `actifs` (`ID_ACTIF`, `MOTCLE`, `ID_USER`, `ID_CLASSE`, `VALIDE`) VALUES
-(3, 'test', 6, 2, 1);
+(5, 's', 6, 2, 1),
+(6, 'test1', 7, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -103,8 +104,7 @@ CREATE TABLE IF NOT EXISTS `bulettinvul` (
 --
 
 INSERT INTO `bulettinvul` (`ID_BUL`, `DATECREATION`, `ETAT`, `VULNERABILITE`, `DESCRIPTION`, `SYSTAFFECTE`, `DATEAPPARITION`, `SOURCE`, `NIVEAURISQUE`, `SOURCEFIABLE`, `NIVEAUCRITICITE`, `NIVEAUIMPACT`, `TESTCORRECTIF`, `APPLICATIONCORRECTIF`, `JUSTIF`, `SYSTCONCERNE`, `VULPRISCHARGE`, `APPLICHARGE`, `OBSERVATION`, `ID_ARTICLE`, `State`) VALUES
-(1, '2015-08-29', 1, 'test', 'test', 'test', '2020-01-01', 'test', 'test', 'test', 'test', 'test', 1, 1, 'test', 'test', 1, 'test', 'test', 0, 1),
-(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1);
+(1, '2015-08-29', 1, 'test5', 'test', 'test', '2020-01-01', 'test', 'test', 'test', 'test', 'test', 1, 1, 'test', 'test', 1, 'test', 'test1', 0, 4);
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `classe` (
 --
 
 INSERT INTO `classe` (`ID_CLASSE`, `TYPEVEILLE`, `THEMATIQUE`, `CATEGORIE`, `RUBRIQUE`, `VALIDE`, `ID_USER`) VALUES
-(2, 'test', 'test', 'test', 'test', 1, 6);
+(2, 'test', 'test', 'test', 'test', 0, 6);
 
 -- --------------------------------------------------------
 
@@ -147,8 +147,7 @@ CREATE TABLE IF NOT EXISTS `concerne` (
 
 INSERT INTO `concerne` (`ID`, `ID_USER`, `ID_BUL`) VALUES
 (1, 8, 1),
-(2, 9, 1),
-(3, 8, 2);
+(2, 9, 1);
 
 -- --------------------------------------------------------
 
@@ -284,7 +283,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `actifs`
 --
 ALTER TABLE `actifs`
-  MODIFY `ID_ACTIF` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `ID_ACTIF` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `archivebul`
 --

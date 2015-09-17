@@ -17,7 +17,7 @@
             //$options = $this->Actif->getClasseHelper();
             echo $this->Form->select('ID_CLASSE', $options,['empty' => "Classe"]);
             if ($valide){
-            echo $this->Form->input('VALIDE');
+              echo $this->Form->input('VALIDE',["type"=>"select","label"=>"Valide","options"=>[1=>"Oui",0=>"Non"]]);
             }
         ?>
     </fieldset>

@@ -76,6 +76,7 @@ class BulettinvulController extends AppController
      */
     public function view($id = null)
     {
+
         $bulettinvul = $this->Bulettinvul->get($id, [
             'contain' => []
         ]);
@@ -165,19 +166,25 @@ class BulettinvulController extends AppController
         $state = 3;}
         else $this->set('inter',false);
         if ($u==1){ $this->set('admin',true);
-        /*$state = 4;*/}
+        $state = 4;}
         else $this->set('admin',false);
         $bulettinvul = $this->Bulettinvul->get($id, [
             'contain' => []
         ]);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $bulettinvul = $this->Bulettinvul->patchEntity($bulettinvul, $this->request->data);
             $bulettinvul->State = $state;
+            //$bulettinvul->ETAT = 1;
             if ($this->Bulettinvul->save($bulettinvul)) {
                 $this->Flash->success(__('The bulettinvul has been saved.'));
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The bulettinvul could not be saved. Please, try again.'));
+                //debug($this->Bulettinvul->validationErrors);
+                debug($bulettinvul);
+                debug($bulettinvul->errors());
+
             }
         }
         $this->set(compact('bulettinvul'));
