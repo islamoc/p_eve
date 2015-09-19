@@ -18,13 +18,13 @@ class BulettinvulController extends AppController
     public function isAuthorized($user = null)
     {
     // Admin can access every action
-    if ($this->Auth->user("TYPEUSER") == 4) {
+    if (($this->Auth->user("TYPEUSER") == 4) && (in_array($this->request->action, ['index','view','edit']))) {
         return true;
     }
     if (($this->Auth->user("TYPEUSER") == 2) && (in_array($this->request->action, ['index','view']))) {
         return true;
     }
-    if (($this->Auth->user("TYPEUSER") == 3) && (in_array($this->request->action, ['index','view']))) {
+    if (($this->Auth->user("TYPEUSER") == 3) && (in_array($this->request->action, ['index','view','edit']))) {
         return true;
     }
 

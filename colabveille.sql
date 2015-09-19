@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2015 at 04:30 AM
+-- Generation Time: Sep 19, 2015 at 06:12 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `actifs` (
   `ID_USER` int(11) NOT NULL,
   `ID_CLASSE` int(11) NOT NULL,
   `VALIDE` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='La table des mots cl';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COMMENT='La table des mots cl';
 
 --
 -- Dumping data for table `actifs`
@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS `actifs` (
 
 INSERT INTO `actifs` (`ID_ACTIF`, `MOTCLE`, `ID_USER`, `ID_CLASSE`, `VALIDE`) VALUES
 (5, 's', 6, 2, 1),
-(6, 'test1', 7, 2, 1);
+(6, 'test1', 7, 2, 1),
+(7, '9iw', 7, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -67,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `URLARTICLE` char(255) DEFAULT NULL,
   `DESCRI` text,
   `DATECAP` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -97,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `bulettinvul` (
   `OBSERVATION` text,
   `ID_ARTICLE` int(11) NOT NULL,
   `State` int(11) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bulettinvul`
@@ -127,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `classe` (
 --
 
 INSERT INTO `classe` (`ID_CLASSE`, `TYPEVEILLE`, `THEMATIQUE`, `CATEGORIE`, `RUBRIQUE`, `VALIDE`, `ID_USER`) VALUES
-(2, 'test', 'test', 'test', 'test', 0, 6);
+(2, 'test', 'test', 'test', 'test', 1, 6);
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `concerne` (
   `ID` int(11) NOT NULL,
   `ID_USER` int(11) NOT NULL,
   `ID_BUL` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `concerne`
@@ -159,14 +160,15 @@ CREATE TABLE IF NOT EXISTS `siteweb` (
   `ID_SITE` int(11) NOT NULL,
   `URLSITE` char(255) DEFAULT NULL,
   `TYPE` varchar(128) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `siteweb`
 --
 
 INSERT INTO `siteweb` (`ID_SITE`, `URLSITE`, `TYPE`) VALUES
-(1, 'www.google.com', 'inter');
+(1, 'www.google.com', 'inter'),
+(2, 'https://www.linkedin.com/?trk=nav_logo', 'Linkedin');
 
 -- --------------------------------------------------------
 
@@ -179,14 +181,15 @@ CREATE TABLE IF NOT EXISTS `spider` (
   `NOMSPIDER` varchar(128) DEFAULT NULL,
   `ETAT` int(11) DEFAULT NULL,
   `ID_SITE` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `spider`
 --
 
 INSERT INTO `spider` (`ID`, `NOMSPIDER`, `ETAT`, `ID_SITE`) VALUES
-(1, 'goga', 1, 1);
+(1, 'goga', 1, 1),
+(2, 'Linkedin', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -205,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `SERVICE` varchar(128) DEFAULT NULL,
   `DIRECTION` varchar(128) DEFAULT NULL,
   `TYPEUSER` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -215,7 +218,8 @@ INSERT INTO `users` (`ID_USER`, `USER`, `MOTDP`, `NOM`, `PRENOM`, `EMAIL`, `POST
 (6, 'islamoc', '$2y$10$OTe.i83xhjAQmkBnC2zINOZ5CKmM.TAeOpRRWo0T6oQfUKPeOOhtC', 'islam', 'islam', 'islamoc@gmail.com', 'islam', 'islam', 'islam', 1),
 (7, 'test', '$2y$10$bZSc9.yixTgBPlq7hxdeiezFUtY9Yoa/gD2f4kUsTw6nhAHj/tqs2', 'test', 'test', 'test@test.test', 'test', 'test', 'test', 4),
 (8, 'analyst', '$2y$10$a0Ove1CLuQkftECQGSkCRetsyzmxXnZYDMx4Vz6GkcOtlQiHDXPdC', 'analyst', 'analyst', 'analyst@analyst.nl', 'analyst', 'analyst', 'analyst', 3),
-(9, 'analyst2', '$2y$10$EBCpHB4nlINFIWr3wFd4tOnrRM7DyN2ZJ5aKcCmmJWxpzg0GklPbC', 'analyst2', 'analyst2', 'analyst2@analyst2.nl', 'analyst2', 'analyst2', 'analyst2', 3);
+(9, 'analyst2', '$2y$10$EBCpHB4nlINFIWr3wFd4tOnrRM7DyN2ZJ5aKcCmmJWxpzg0GklPbC', 'analyst2', 'analyst2', 'analyst2@analyst2.nl', 'analyst2', 'analyst2', 'analyst2', 3),
+(10, 'inter', '$2y$10$N6pLLldCFRn5TzlnafJlOufZQASmRoQh4x28l5KkC8qlt.uf9FIWK', 'inter', 'inter', 'inter@inter.com', 'inter', 'inter', 'inter', 4);
 
 --
 -- Indexes for dumped tables
@@ -283,7 +287,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `actifs`
 --
 ALTER TABLE `actifs`
-  MODIFY `ID_ACTIF` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `ID_ACTIF` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `archivebul`
 --
@@ -293,12 +297,12 @@ ALTER TABLE `archivebul`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `ID_ARTICLE` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_ARTICLE` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `bulettinvul`
 --
 ALTER TABLE `bulettinvul`
-  MODIFY `ID_BUL` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `ID_BUL` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `classe`
 --
@@ -308,22 +312,22 @@ ALTER TABLE `classe`
 -- AUTO_INCREMENT for table `concerne`
 --
 ALTER TABLE `concerne`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `siteweb`
 --
 ALTER TABLE `siteweb`
-  MODIFY `ID_SITE` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `ID_SITE` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `spider`
 --
 ALTER TABLE `spider`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID_USER` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `ID_USER` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- Constraints for dumped tables
 --

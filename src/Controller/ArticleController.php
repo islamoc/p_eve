@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Article Controller
@@ -10,6 +11,23 @@ use App\Controller\AppController;
  */
 class ArticleController extends AppController
 {
+    /*public function isAuthorized($user = null)
+    {
+    // Admin can access every action
+    /*if ((in_array($this->request->action, ['index']))) {
+        return true;
+    }
+    return parent::isAuthorized();
+    if ($loggedIn === null) {
+        return true;
+    }
+    return true;
+  }*/
+    function beforeFilter(Event $event)
+    {
+    parent::beforeFilter($event);
+    $this->Auth->allow('index');
+    }
 
     public function getArticle()
     {
@@ -30,7 +48,7 @@ class ArticleController extends AppController
      */
     public function index()
     {
-        $this->set('article', $this->paginate($this->Article));
+        $this->set('article', $this->paginate("article"));
         $this->set('_serialize', ['article']);
     }
 

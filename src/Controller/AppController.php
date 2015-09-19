@@ -41,7 +41,7 @@ class AppController extends Controller
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow('ksas');
+        $this->Auth->allow('sdsj');
     }
     /**
      * Initialization hook method.
@@ -58,8 +58,8 @@ class AppController extends Controller
         $this->loadComponent('Auth', [
             'authorize' => ['Controller'],
             'loginRedirect' => [
-                'controller' => '',
-                'action' => ''
+                'controller' => 'article',
+                'action' => 'index'
             ],
             'authenticate' => [
                  'Form' => [
