@@ -1,17 +1,17 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Article;
+use App\Model\Entity\Archivebul;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Article Model
+ * Archivebul Model
  *
  */
-class ArticleTable extends Table
+class ArchivebulTable extends Table
 {
 
     /**
@@ -24,13 +24,9 @@ class ArticleTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('article');
-        $this->belongsTo('siteweb', [
-            'foreignKey' => 'ID_SITE',
-            'className' => 'siteweb'
-        ]);
-        $this->displayField('ID_ARTICLE');
-        $this->primaryKey('ID_ARTICLE');
+        $this->table('archivebul');
+        $this->displayField('ID');
+        $this->primaryKey('ID');
     }
 
     /**
@@ -42,22 +38,19 @@ class ArticleTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('ID_ARTICLE', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('ID_ARTICLE', 'create');
+            ->add('ID', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('ID', 'create');
 
         $validator
-            ->add('ID_SITE', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('ID_SITE', 'create')
-            ->notEmpty('ID_SITE');
+            ->allowEmpty('DATEARCHIVAGE');
 
         $validator
-            ->allowEmpty('URLARTICLE');
+            ->allowEmpty('REMARQUE');
 
         $validator
-            ->allowEmpty('DESCRI');
-
-        $validator
-            ->allowEmpty('DATECAP');
+            ->add('ID_BUL', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('ID_BUL', 'create')
+            ->notEmpty('ID_BUL');
 
         return $validator;
     }

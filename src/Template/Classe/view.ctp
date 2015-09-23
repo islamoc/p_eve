@@ -26,7 +26,7 @@
             <h6 class="subheader"><?= __('VALIDE') ?></h6>
             <p><?= $this->Number->format($classe->VALIDE) ?></p>
             <h6 class="subheader"><?= __('ID USER') ?></h6>
-            <p><?= $this->Number->format($classe->ID_USER) ?></p>
+            <p><?= h($classe->user->USER) ?></p>
         </div>
     </div>
 </div>

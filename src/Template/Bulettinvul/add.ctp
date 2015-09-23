@@ -16,7 +16,7 @@
             echo $this->Form->input('SYSTAFFECTE');
             echo $this->Form->input('DATEAPPARITION', ['empty' => true, 'default' => '']);
             echo $this->Form->input('SOURCE');
-            echo $this->Form->input('NIVEAURISQUE');
+            /*echo $this->Form->input('NIVEAURISQUE');
             echo $this->Form->input('SOURCEFIABLE');
             echo $this->Form->input('NIVEAUCRITICITE');
             echo $this->Form->input('NIVEAUIMPACT');
@@ -26,11 +26,12 @@
             echo $this->Form->input('SYSTCONCERNE');
             echo $this->Form->input('VULPRISCHARGE',["type"=>"select","label"=>"Prise en charge","options"=>[1=>"Oui",2=>"Non"]]);
             echo $this->Form->input('APPLICHARGE');
-            echo $this->Form->input('OBSERVATION');
-            echo $this->Form->input('ID_ARTICLE',["type"=>"select","label"=>"Article","options"=>[$aoptions,0=>"Autre"]]);
+            echo $this->Form->input('OBSERVATION');*/
+            echo $this->Form->input('ID_ARTICLE',["type"=>"select","label"=>"Article","options"=>$aoptions]);
             //echo $this->Form->input('State');
             //$options = [1 =>"test" , 2 => "test2"];
-            echo $this->Form->select('USERS', $options,["multiple"=>true]);
+            echo $this->Form->input('USERS',["type"=>"select","label"=>"Analystes Concernées","options"=>$options,"multiple"=>true]);
+            //echo $this->Form->select('USERS', $options,["multiple"=>true]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

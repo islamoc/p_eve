@@ -11,7 +11,7 @@
             <th><?= $this->Paginator->sort('ID_ARTICLE') ?></th>
             <th><?= $this->Paginator->sort('ID_SITE') ?></th>
             <th><?= $this->Paginator->sort('URLARTICLE') ?></th>
-            <th><?= $this->Paginator->sort('DATECAP') ?></th>
+            <th><?= $this->Paginator->sort('DESCRIPTION') ?></th>
             <!--<th class="actions"><?= __('Actions') ?></th>-->
         </tr>
     </thead>
@@ -19,14 +19,14 @@
     <?php foreach ($article as $article): ?>
         <tr>
             <td><?= $this->Number->format($article->ID_ARTICLE) ?></td>
-            <td><?= $this->Number->format($article->ID_SITE) ?></td>
+            <td><?= h($article->siteweb->URLSITE) ?></td>
             <td><?= h($article->URLARTICLE) ?></td>
-            <td><?= h($article->DATECAP) ?></td>
-            <!--<td class="actions">
-                <?= $this->Html->link(__('View'), ['action' => 'view', $article->ID_ARTICLE]) ?>
-                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $article->ID_ARTICLE]) ?>
-                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $article->ID_ARTICLE], ['confirm' => __('Are you sure you want to delete # {0}?', $article->ID_ARTICLE)]) ?>
-            </td>-->
+            <td><?= h($article->DESCRI) ?></td>
+            <td class="actions">
+                <?= $this->Html->link(__('Nouveau Bulettin'), ['controller'=>'bulettinvul','action' => 'add']) ?>
+                <!--<?= $this->Html->link(__('Edit'), ['action' => 'edit', $article->ID_ARTICLE]) ?>
+                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $article->ID_ARTICLE], ['confirm' => __('Are you sure you want to delete # {0}?', $article->ID_ARTICLE)]) ?>-->
+            </td>
         </tr>
 
     <?php endforeach; ?>

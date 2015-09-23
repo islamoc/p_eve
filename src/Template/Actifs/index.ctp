@@ -21,8 +21,8 @@
         <tr>
             <td><?= $this->Number->format($actif->ID_ACTIF) ?></td>
             <td><?= h($actif->MOTCLE) ?></td>
-            <td><?= $this->Number->format($actif->ID_USER) ?></td>
-            <td><?= $this->Number->format($actif->ID_CLASSE) ?></td>
+            <td><?= /*$this->Number->format($actif->ID_USER)*/h($actif->user->USER) ?></td>
+            <td><?= /*$this->Number->format($actif->ID_CLASSE)*/h($actif->classe->TYPEVEILLE) ?></td>
             <td class="<?php if ($this->Number->format($actif->VALIDE)== 1) echo 'cake-success';else echo 'cake-error'?>"><?= $this->Number->format($actif->VALIDE) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $actif->ID_ACTIF]) ?>

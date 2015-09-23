@@ -1,7 +1,7 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Html->link(__('New Bulettinvul'), ['action' => 'add']) ?></li>
+        <li><?php if ($admin == true) echo $this->Html->link(__('New Bulettinvul'), ['action' => 'add']) ?></li>
     </ul>
 </div>
 <div class="bulettinvul index large-10 medium-9 columns">
@@ -27,15 +27,16 @@
             <td><?= h($bulettinvul->VULNERABILITE) ?></td>
             <td><?= h($bulettinvul->DESCRIPTION) ?></td>
             <td><?= h($bulettinvul->SYSTAFFECTE) ?></td>
-            <td><?php if ($bulettinvul->State == 1) echo "Analyst" ;
-                    if ($bulettinvul->State == 2) echo "Inter";
-                    if ($bulettinvul->State == 3) echo "a Confirmer et archiver";
+            <td><?php if ($bulettinvul->State == 1) echo "en cours de traitement par les Analystes" ;
+                    if ($bulettinvul->State == 2) echo "en cours de traitement par l'interlocuteur de veille";
+                    if ($bulettinvul->State == 3) echo "Confirmation de l'administrateur";
+                    if ($bulettinvul->State == 4) echo "A archiver";
                   ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $bulettinvul->ID_BUL]) ?>
                 <?php if ($commite == false) echo $this->Html->link(__('Edit'), ['action' => 'edit', $bulettinvul->ID_BUL]) ?>
                 <?php if ($admin == true) echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $bulettinvul->ID_BUL], ['confirm' => __('Are you sure you want to delete # {0}?', $bulettinvul->ID_BUL)]) ?>
-                <?php if (($admin == true) && ($bulettinvul->State == 3)) echo $this->Form->postLink(__('Archive'), ['action' => 'archive', $bulettinvul->ID_BUL], ['confirm' => __('Are you sure you want to archive # {0}?', $bulettinvul->ID_BUL)]) ?>
+                <?php if (($admin == true) && ($bulettinvul->State == 4)) echo $this->Html->link(__('Archive'), ['controller'=>'archivebul','action' => 'add', $bulettinvul->ID_BUL], ['confirm' => __('Are you sure you want to archive # {0}?', $bulettinvul->ID_BUL)]) ?>
             </td>
         </tr>
 

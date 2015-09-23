@@ -36,9 +36,12 @@ class ArticleController extends AppController
       $results = $query->all();
       $results = $results->toArray();
       $o = array();
+      //$o[0] = "Autre";
       for ($i = 0;$i<count($results);$i++){
         $o[$results[$i]["ID_ARTICLE"]] = $results[$i]["DESCRI"];
       }
+      $s = count($o);
+      $o[0] = "Autre";
       return $o;
     }
     /**
@@ -48,7 +51,8 @@ class ArticleController extends AppController
      */
     public function index()
     {
-        $this->set('article', $this->paginate("article"));
+        $this->loadModel('Article');
+        $this->set('article', $this->paginate($this->Article->find("all",["contain"=>["siteweb"]])));
         $this->set('_serialize', ['article']);
     }
 

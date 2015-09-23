@@ -25,6 +25,10 @@ class ClasseTable extends Table
         parent::initialize($config);
 
         $this->table('classe');
+        $this->belongsTo('users', [
+            'foreignKey' => 'ID_USER',
+            'className' => 'users'
+        ]);
         $this->displayField('ID_CLASSE');
         $this->primaryKey('ID_CLASSE');
     }

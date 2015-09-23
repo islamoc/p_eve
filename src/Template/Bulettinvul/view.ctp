@@ -1,10 +1,10 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Html->link(__('Edit Bulettinvul'), ['action' => 'edit', $bulettinvul->ID_BUL]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Bulettinvul'), ['action' => 'delete', $bulettinvul->ID_BUL], ['confirm' => __('Are you sure you want to delete # {0}?', $bulettinvul->ID_BUL)]) ?> </li>
+        <li><?php if ($commite == false) echo $this->Html->link(__('Edit Bulettinvul'), ['action' => 'edit', $bulettinvul->ID_BUL]) ?> </li>
+        <li><?php if ($admin == true) echo $this->Form->postLink(__('Delete Bulettinvul'), ['action' => 'delete', $bulettinvul->ID_BUL], ['confirm' => __('Are you sure you want to delete # {0}?', $bulettinvul->ID_BUL)]) ?> </li>
         <li><?= $this->Html->link(__('List Bulettinvul'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Bulettinvul'), ['action' => 'add']) ?> </li>
+        <li><?php if ($admin == true) echo $this->Html->link(__('New Bulettinvul'), ['action' => 'add']) ?> </li>
     </ul>
 </div>
 <div class="bulettinvul view large-10 medium-9 columns">
@@ -38,17 +38,22 @@
             <h6 class="subheader"><?= __('ID BUL') ?></h6>
             <p><?= $this->Number->format($bulettinvul->ID_BUL) ?></p>
             <h6 class="subheader"><?= __('ETAT') ?></h6>
-            <p><?= $this->Number->format($bulettinvul->ETAT) ?></p>
+            <p><?php if ($bulettinvul->ETAT == 1) echo "Activé";else echo "désactivé";  ?></p>
             <h6 class="subheader"><?= __('TESTCORRECTIF') ?></h6>
-            <p><?= $this->Number->format($bulettinvul->TESTCORRECTIF) ?></p>
+            <p><?php if ($bulettinvul->TESTCORRECTIF == 1) echo "Oui";else echo "Non"; ?></p>
             <h6 class="subheader"><?= __('APPLICATIONCORRECTIF') ?></h6>
-            <p><?= $this->Number->format($bulettinvul->APPLICATIONCORRECTIF) ?></p>
+            <p><?php if ($bulettinvul->APPLICATIONCORRECTIF == 1) echo "Oui";else echo "Non"; ?></p>
             <h6 class="subheader"><?= __('VULPRISCHARGE') ?></h6>
-            <p><?= $this->Number->format($bulettinvul->VULPRISCHARGE) ?></p>
+            <p><?php if ($bulettinvul->VULPRISCHARGE == 1) echo "Oui";else echo "Non"; ?></p>
             <h6 class="subheader"><?= __('ID ARTICLE') ?></h6>
             <p><?= $this->Number->format($bulettinvul->ID_ARTICLE) ?></p>
             <h6 class="subheader"><?= __('State') ?></h6>
-            <p><?= $this->Number->format($bulettinvul->State) ?></p>
+            <p><?php if ($bulettinvul->State == 1) echo "en cours de traitement par les Analystes" ;
+                    if ($bulettinvul->State == 2) echo "en cours de traitement par l'interlocuteur de veille";
+                    if ($bulettinvul->State == 3) echo "Confirmation de l'administrateur";
+                    if ($bulettinvul->State == 4) echo "A archiver";
+
+                  ?></p>
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('DATECREATION') ?></h6>

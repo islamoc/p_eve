@@ -58,69 +58,60 @@ class BulettinvulTable extends Table
             ->requirePresence('VULNERABILITE', 'create');
 
         $validator
-            ->allowEmpty('DESCRIPTION')
-            ->requirePresence('DESCRIPTION', 'create');
+            ->requirePresence('DESCRIPTION', 'create')
+            ->allowEmpty('DESCRIPTION','update');
+
 
         $validator
-            ->allowEmpty('SYSTAFFECTE')
-            ->requirePresence('SYSTAFFECTE', 'create');
+            ->requirePresence('SYSTAFFECTE', 'create')
+            ->allowEmpty('SYSTAFFECTE','update');
+
 
         $validator
             ->add('DATEAPPARITION', 'valid', ['rule' => 'date'])
             ->requirePresence('DATEAPPARITION', 'create')
-            ->allowEmpty('DATEAPPARITION');
+            ->allowEmpty('DATEAPPARITION','update');
 
         $validator
-            ->allowEmpty('SOURCE')
-            ->requirePresence('SOURCE', 'create');
+            ->requirePresence('SOURCE', 'create')
+            ->allowEmpty('SOURCE','update');
 
         $validator
-            ->allowEmpty('NIVEAURISQUE')
-            ->requirePresence('NIVEAURISQUE', 'update');
+            ->allowEmpty('NIVEAURISQUE');
 
         $validator
-            ->allowEmpty('SOURCEFIABLE')
-            ->requirePresence('SOURCEFIABLE', 'update');
+            ->allowEmpty('SOURCEFIABLE');
 
         $validator
-            ->allowEmpty('NIVEAUCRITICITE')
-            ->requirePresence('NIVEAUCRITICITE', 'update');
+            ->allowEmpty('NIVEAUCRITICITE');
 
         $validator
-            ->allowEmpty('NIVEAUIMPACT')
-            ->requirePresence('NIVEAUIMPACT', 'update');
+            ->allowEmpty('NIVEAUIMPACT');
 
         $validator
             ->add('TESTCORRECTIF', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('NIVEAUIMPACT', 'update')
             ->allowEmpty('TESTCORRECTIF');
 
         $validator
             ->add('APPLICATIONCORRECTIF', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('APPLICATIONCORRECTIF', 'update')
             ->allowEmpty('APPLICATIONCORRECTIF');
 
         $validator
-            ->allowEmpty('JUSTIF')
-            ->requirePresence('JUSTIF', 'update');
+            ->allowEmpty('JUSTIF');
 
         $validator
-            ->requirePresence('SYSTCONCERNE', 'update')
-            ->allowEmpty('SYSTCONCERNE','create');
+            ->allowEmpty('SYSTCONCERNE');
 
 
         $validator
             ->add('VULPRISCHARGE', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('VULPRISCHARGE')
-            ->requirePresence('VULPRISCHARGE', 'update');
+            ->allowEmpty('VULPRISCHARGE');
 
         $validator
-            ->allowEmpty('APPLICHARGE')
-            ->requirePresence('APPLICHARGE', 'update');
+            ->allowEmpty('APPLICHARGE');
 
         $validator
-            ->allowEmpty('OBSERVATION')
-            ->requirePresence('OBSERVATION', 'update');
+            ->allowEmpty('OBSERVATION');
 
         $validator
             ->add('ID_ARTICLE', 'valid', ['rule' => 'numeric'])

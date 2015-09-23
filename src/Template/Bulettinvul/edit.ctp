@@ -1,7 +1,7 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Form->postLink(
+        <li><?php if ($admin == true) echo $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $bulettinvul->ID_BUL],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $bulettinvul->ID_BUL)]
@@ -22,18 +22,18 @@
             if ($admin) echo $this->Form->input('SYSTAFFECTE');
             if ($admin) echo $this->Form->input('DATEAPPARITION', ['empty' => true, 'default' => '']);
             if ($admin) echo $this->Form->input('SOURCE');
-            if (($admin) || ($analyst)) echo $this->Form->input('NIVEAURISQUE');
-            if (($admin) || ($analyst)) echo $this->Form->input('SOURCEFIABLE');
-            if (($admin) || ($analyst)) echo $this->Form->input('NIVEAUCRITICITE');
-            if (($admin) || ($analyst)) echo $this->Form->input('NIVEAUIMPACT');
-            if (($admin) || ($inter)) echo $this->Form->input('TESTCORRECTIF',["type"=>"select","label"=>"Test Correctif","options"=>[1=>"Oui",2=>"Non"]]);
-            if (($admin) || ($inter)) echo $this->Form->input('APPLICATIONCORRECTIF',["type"=>"select","label"=>"Application Correctif","options"=>[1=>"Oui",2=>"Non"]]);
-            if (($admin) || ($inter)) echo $this->Form->input('JUSTIF');
-            if (($admin) || ($inter)) echo $this->Form->input('SYSTCONCERNE');
+            if (($analyst)) echo $this->Form->input('NIVEAURISQUE');
+            if (($analyst)) echo $this->Form->input('SOURCEFIABLE');
+            if (($analyst)) echo $this->Form->input('NIVEAUCRITICITE');
+            if (($analyst)) echo $this->Form->input('NIVEAUIMPACT');
+            if (($inter)) echo $this->Form->input('TESTCORRECTIF',["type"=>"select","label"=>"Test Correctif","options"=>[1=>"Oui",2=>"Non"]]);
+            if (($inter)) echo $this->Form->input('APPLICATIONCORRECTIF',["type"=>"select","label"=>"Application Correctif","options"=>[1=>"Oui",2=>"Non"]]);
+            if (($inter)) echo $this->Form->input('JUSTIF');
+            if (($inter)) echo $this->Form->input('SYSTCONCERNE');
             if ($admin) echo $this->Form->input('VULPRISCHARGE',["type"=>"select","label"=>"Prise en charge","options"=>[1=>"Oui",2=>"Non"]]);
             if ($admin) echo $this->Form->input('APPLICHARGE');
             if ($admin) echo $this->Form->input('OBSERVATION');
-            if ($admin) echo $this->Form->input('ID_ARTICLE',["type"=>"select","label"=>"Article","options"=>[$aoptions,0=>"Autre"]]);
+            if ($admin) echo $this->Form->input('ID_ARTICLE',["type"=>"select","label"=>"Article","options"=>$aoptions]);
             //echo $this->Form->input('State');
             //$options = [1 =>"test" , 2 => "test2"];
             //echo $this->Form->select('USERS', $options,["multiple"=>true]);

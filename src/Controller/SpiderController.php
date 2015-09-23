@@ -28,6 +28,21 @@ class SpiderController extends AppController
         $this->set('spider', $this->paginate($this->Spider->find("all",["contain"=>["siteweb"]])));
         $this->set('_serialize', ['spider']);
     }
+    public function spiderinfo()
+    {
+        $sa = $this->Spider->find()->where(["spider.ETAT" => 1])->count();
+        $sd = $this->Spider->find()->where(["spider.ETAT" => 0])->count();
+        $this->set('sa', $sa);
+        $this->set('sd', $sd);
+    }
+    public function start()
+    {
+    //ob_start();
+    exec('C:\\Python27\\python.exe C:\\ProjetVeille\\ProjetVeille\\Test.py',$out);
+    //$out=ob_get_contents();
+    $this->set('out', $out);
+    //echo print_r($out,true);
+    }
 
     /**
      * View method

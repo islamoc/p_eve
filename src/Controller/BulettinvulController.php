@@ -50,21 +50,57 @@ class BulettinvulController extends AppController
           //}
           //$r = (Object)$r;
           //$this->set('bulettinvul', $this->paginate($this->Bulettinvul->find('all', ['conditions' => ['bulettinvul.ID_BUL' => $q]])));
-          $this->set('bulettinvul', $this->paginate($this->Bulettinvul->find()->where(["ID_BUL in"=>$q])));
+          $this->set('bulettinvul', $this->paginate($this->Bulettinvul->find()->where(["ID_BUL in"=>$q,"bulettinvul.State IS NOT"=>5])));
           $this->set('_serialize', ['bulettinvul']);
           if ($this->Auth->user("TYPEUSER") == 2) $this->set('commite', true);
           else $this->set('commite', false);
           if ($this->Auth->user("TYPEUSER") == 1) $this->set('admin', true);
           else $this->set('admin', false);
         }
-        else{
+        if ($this->Auth->user("TYPEUSER") == 4){
+          /*$c = new ConcerneController();
+          $q = $c->getConcerne($this->Auth->user("ID_USER"));
+          $this->set('q', $q);*/
+          //$r = null;
+          //foreach ($qs as $q){
+          //;
+          //}
+          //$r = (Object)$r;
+          //$this->set('bulettinvul', $this->paginate($this->Bulettinvul->find('all', ['conditions' => ['bulettinvul.State' => 2,"bulettinvul.State IS NOT"=>5]])));
+          //$this->set('bulettinvul', $this->paginate($this->Bulettinvul->find()->where(["ID_BUL in"=>$q,"State"=>2])));
+          $this->set('bulettinvul', $this->paginate($this->Bulettinvul->find()->where(["bulettinvul.State IS NOT"=>5,"bulettinvul.State >="=>2])));
+          $this->set('_serialize', ['bulettinvul']);
+          if ($this->Auth->user("TYPEUSER") == 2) $this->set('commite', true);
+          else $this->set('commite', false);
+          if ($this->Auth->user("TYPEUSER") == 1) $this->set('admin', true);
+          else $this->set('admin', false);
+        }
+        if (($this->Auth->user("TYPEUSER") == 1) OR ($this->Auth->user("TYPEUSER") == 2)){
+          /*$c = new ConcerneController();
+          $q = $c->getConcerne($this->Auth->user("ID_USER"));
+          $this->set('q', $q);*/
+          //$r = null;
+          //foreach ($qs as $q){
+          //;
+          //}
+          //$r = (Object)$r;
+          //$this->set('bulettinvul', $this->paginate($this->Bulettinvul->find('all',["condition"=>["bulettinvul.State IS NOT"=>5]])));
+          $this->set('bulettinvul', $this->paginate($this->Bulettinvul->find()->where(["bulettinvul.State IS NOT"=>5])));
+          //$this->set('bulettinvul', $this->paginate($this->Bulettinvul->find()->where(["ID_BUL in"=>$q,"State"=>2])));
+          $this->set('_serialize', ['bulettinvul']);
+          if ($this->Auth->user("TYPEUSER") == 2) $this->set('commite', true);
+          else $this->set('commite', false);
+          if ($this->Auth->user("TYPEUSER") == 1) $this->set('admin', true);
+          else $this->set('admin', false);
+        }
+        /*else{
         $this->set('bulettinvul', $this->paginate($this->Bulettinvul));
         $this->set('_serialize', ['bulettinvul']);
         if ($this->Auth->user("TYPEUSER") == 2) $this->set('commite', true);
         else $this->set('commite', false);
         if ($this->Auth->user("TYPEUSER") == 1) $this->set('admin', true);
         else $this->set('admin', false);
-      }
+      }*/
     }
 
     /**

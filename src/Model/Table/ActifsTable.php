@@ -25,6 +25,15 @@ class ActifsTable extends Table
         parent::initialize($config);
 
         $this->table('actifs');
+        $this->belongsTo('users', [
+            'foreignKey' => 'ID_USER',
+            'className' => 'users'
+        ]);
+        $this->belongsTo('classe', [
+            'foreignKey' => 'ID_CLASSE',
+            'className' => 'classe'
+        ]);
+
         $this->displayField('ID_ACTIF');
         $this->primaryKey('ID_ACTIF');
     }

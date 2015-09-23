@@ -18,9 +18,9 @@
             <h6 class="subheader"><?= __('ID ACTIF') ?></h6>
             <p><?= $this->Number->format($actif->ID_ACTIF) ?></p>
             <h6 class="subheader"><?= __('ID USER') ?></h6>
-            <p><?= $this->Number->format($actif->ID_USER) ?></p>
+            <p><?= h($actif->user->USER) ?></p>
             <h6 class="subheader"><?= __('ID CLASSE') ?></h6>
-            <p><?= $this->Number->format($actif->ID_CLASSE) ?></p>
+            <p><?= h($actif->classe->TYPEVEILLE) ?></p>
             <h6 class="subheader"><?= __('VALIDE') ?></h6>
             <p><?= $this->Number->format($actif->VALIDE) ?></p>
         </div>

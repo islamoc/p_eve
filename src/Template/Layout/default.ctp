@@ -47,6 +47,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <span><a  href="<?php echo $link?>bulettinvul">Bulettin</a></span>
             <span><a  href="<?php echo $link?>siteweb">Site</a></span>
             <span><a  href="<?php echo $link?>spider">Spider</a></span>
+            <span><a  href="<?php echo $link?>spider/spiderinfo">Info Spider</a></span>
             <span><a  href="<?php echo $link?>users/logout">Logout</a></span>
         </div>
       <?php } ?>

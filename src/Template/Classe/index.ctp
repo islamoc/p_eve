@@ -27,7 +27,7 @@
             <td><?= h($classe->CATEGORIE) ?></td>
             <td><?= h($classe->RUBRIQUE) ?></td>
             <td class="<?php if ($this->Number->format($classe->VALIDE)== 1) echo 'cake-success';else echo 'cake-error'?>"><?= $this->Number->format($classe->VALIDE) ?></td>
-            <td><?= $this->Number->format($classe->ID_USER) ?></td>
+            <td><?= /*$this->Number->format($classe->ID_USER)*/h($classe->user->USER) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $classe->ID_CLASSE]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $classe->ID_CLASSE]) ?>

@@ -44,12 +44,15 @@ class ClasseController extends AppController
     {
       if ($this->Auth->user('TYPEUSER') == 1)
       {
-        $this->set('classe', $this->paginate($this->Classe));
+        $this->set('classe', $this->paginate(($this->Classe->find('all', [
+                                            'contain' => ['users']
+                                            ]))));
         $this->set('_serialize', ['classe']);
       }
       else {
         $this->set('classe', $this->paginate($this->Classe->find('all', [
                                             'conditions' => ['classe.VALIDE' => 1,'classe.ID_USER' => $this->Auth->user('ID_USER')],
+                                            'contain' => ['users']
                                             ])));
         $this->set('_serialize', ['classe']);
       }
@@ -67,7 +70,7 @@ class ClasseController extends AppController
       if ($this->Auth->user('TYPEUSER') == 1)
       {
         $classe = $this->Classe->get($id, [
-            'contain' => []
+            'contain' => ["users"]
         ]);
         $this->set('classe', $classe);
         $this->set('_serialize', ['classe']);
@@ -76,7 +79,7 @@ class ClasseController extends AppController
       {
         $classe = $this->Classe->get($id, [
             'conditions' => ['classe.VALIDE' => 1,'classe.ID_USER' => $this->Auth->user('ID_USER')],
-            'contain' => []
+            'contain' => ["users"]
         ]);
         $this->set('classe', $classe);
         $this->set('_serialize', ['classe']);

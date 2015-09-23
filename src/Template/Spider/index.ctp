@@ -24,6 +24,7 @@
             <td><?= //$this->Number->format($spider->URLSITE)
             h($spider->siteweb->URLSITE) ?></td>
             <td class="actions">
+                <?= $this->Html->link(__('Start'),['action' => 'start']); ?>
                 <?= $this->Html->link(__('View'), ['action' => 'view', $spider->ID]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $spider->ID]) ?>
                 <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $spider->ID], ['confirm' => __('Are you sure you want to delete # {0}?', $spider->ID)]) ?>

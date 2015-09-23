@@ -31,13 +31,14 @@ class ActifsController extends AppController
         //echo $this->Auth->user('TYPEUSER');
         if ($this->Auth->user('TYPEUSER') == 1)
         {
-          $this->set('actifs', $this->paginate($this->Actifs));
+          $this->set('actifs', $this->paginate($this->Actifs->find("all",["contain"=>["users","classe"]])));
           $this->set('_serialize', ['actifs']);
         }
         else
         {
           $this->set('actifs', $this->paginate($this->Actifs->find('all', [
                                               'conditions' => ['actifs.VALIDE' => 1,'actifs.ID_USER' => $this->Auth->user('ID_USER')],
+                                              ["contain"=>["classe","users"]]
                                               ])));
           $this->set('_serialize', ['actifs']);
         }
@@ -55,7 +56,7 @@ class ActifsController extends AppController
       if ($this->Auth->user('TYPEUSER') == 1)
       {
         $actif = $this->Actifs->get($id, [
-            'contain' => []
+            'contain' => ["users","classe"]
         ]);
         $this->set('actif', $actif);
         $this->set('_serialize', ['actif']);
@@ -64,7 +65,7 @@ class ActifsController extends AppController
       {
         $actif = $this->Actifs->get($id, [
             'conditions' => ['actifs.VALIDE' => 1,'actifs.ID_USER' => $this->Auth->user('ID_USER')],
-            'contain' => []
+            "contain"=>["users","classe"]
         ]);
         $this->set('actif', $actif);
         $this->set('_serialize', ['actif']);
